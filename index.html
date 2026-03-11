@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tic Tac Toe</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
 
-<div class="container">
+<!-- PANTALLA INICIO -->
+<div class="screen active" id="startScreen">
 
 <h1>TIC TAC TOE</h1>
 
-<div id="turn">TURNO DEL JUGADOR: X</div>
+<button id="startBtn">JUGAR</button>
+
+</div>
+
+
+<!-- PANTALLA JUEGO -->
+<div class="screen" id="gameScreen">
+
+<h2>TIC TAC TOE</h2>
+
+<p id="turn">TURNO DEL JUGADOR: X</p>
 
 <div class="board">
 
@@ -35,22 +43,22 @@
 
 </div>
 
-<button onclick="resetGame()">JUGAR</button>
-
 </div>
 
 
-<div class="winner-screen" id="winnerScreen">
+<!-- PANTALLA GANADOR -->
+<div class="winner" id="winnerBox">
 
-<div class="winner-box">
+<div class="winner-content">
 
-<h2 id="winnerText"></h2>
+<h3 id="winnerText"></h3>
 
-<button onclick="resetGame()">Jugar otra vez</button>
+<button id="restartBtn">Jugar otra vez</button>
 
 </div>
 
 </div>
+
 
 <script src="script.js"></script>
 
