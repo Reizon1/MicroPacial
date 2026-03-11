@@ -2,7 +2,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial;
 }
 
 body{
@@ -10,44 +10,58 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background: linear-gradient(135deg,#1f2a44 50%, #3fb3d6 50%);
-}
-
-.container{
-text-align:center;
+background: linear-gradient(135deg,#1f2a44 50%,#40b7dc 50%);
 color:white;
 }
 
+.screen{
+display:none;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.active{
+display:flex;
+}
+
 h1{
-margin-bottom:20px;
-letter-spacing:2px;
-}
-
-#turn{
-margin-bottom:30px;
-font-size:20px;
-font-weight:bold;
-}
-
-.board{
-display:grid;
-grid-template-columns:repeat(3,100px);
-gap:15px;
-justify-content:center;
+font-size:50px;
 margin-bottom:40px;
 }
 
+button{
+background:black;
+color:white;
+border:none;
+padding:15px 60px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#333;
+}
+
+.board{
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(3,90px);
+gap:15px;
+}
+
 .cell{
-width:100px;
-height:100px;
-background:#d9d9d9;
+width:90px;
+height:90px;
+background:#dcdcdc;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:40px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
+transition:0.2s;
 }
 
 .cell:hover{
@@ -56,55 +70,30 @@ transform:scale(1.1);
 
 .X{
 color:#ff4c4c;
-animation:pop 0.3s ease;
 }
 
 .O{
-color:#3fb3d6;
-animation:pop 0.3s ease;
+color:#1f7aff;
 }
 
-button{
-background:#111;
-color:white;
-border:none;
-padding:15px 60px;
-font-size:18px;
-border-radius:25px;
-cursor:pointer;
-}
-
-button:hover{
-background:#333;
-}
-
-@keyframes pop{
-0%{transform:scale(0);}
-100%{transform:scale(1);}
-}
-
-.winner-screen{
+.winner{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
 display:flex;
 justify-content:center;
 align-items:center;
+background:rgba(0,0,0,0.6);
 visibility:hidden;
 }
 
-.winner-box{
+.winner-content{
 background:white;
 padding:40px;
-text-align:center;
 border-radius:10px;
-}
-
-.winner-box h2{
-margin-bottom:20px;
+text-align:center;
 color:black;
 }
 
@@ -112,16 +101,20 @@ color:black;
 visibility:visible;
 }
 
-@media (max-width:600px){
+@media(max-width:600px){
 
 .board{
-grid-template-columns:repeat(3,80px);
+grid-template-columns:repeat(3,70px);
 }
 
 .cell{
-width:80px;
-height:80px;
+width:70px;
+height:70px;
 font-size:30px;
+}
+
+h1{
+font-size:35px;
 }
 
 }
