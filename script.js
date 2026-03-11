@@ -1,46 +1,68 @@
-let currentPlayer = "X"
+let startBtn = document.getElementById("startBtn")
+let startScreen = document.getElementById("startScreen")
+let gameScreen = document.getElementById("gameScreen")
  
 let cells = document.querySelectorAll(".cell")
- 
 let turnText = document.getElementById("turn")
  
-let winnerScreen = document.getElementById("winnerScreen")
- 
+let winnerBox = document.getElementById("winnerBox")
 let winnerText = document.getElementById("winnerText")
+let restartBtn = document.getElementById("restartBtn")
  
+let currentPlayer = "X"
+ 
+startBtn.onclick = () => {
+ 
+startScreen.classList.remove("active")
+gameScreen.classList.add("active")
+ 
+}
  
 cells.forEach(cell => {
  
-cell.addEventListener("click", () => {
+cell.addEventListener("click",()=>{
  
-if(cell.textContent !== "") return
+if(cell.textContent!="") return
  
-cell.textContent = currentPlayer
- 
+cell.textContent=currentPlayer
 cell.classList.add(currentPlayer)
  
 if(checkWinner()){
  
-winnerText.textContent = "GANÓ EL JUGADOR " + currentPlayer
- 
-winnerScreen.classList.add("show")
+winnerText.textContent="GANO EL JUGADOR "+currentPlayer
+winnerBox.classList.add("show")
  
 return
  
 }
  
-currentPlayer = currentPlayer === "X" ? "O" : "X"
+currentPlayer = currentPlayer==="X" ? "O":"X"
  
-turnText.textContent = "TURNO DEL JUGADOR: " + currentPlayer
+turnText.textContent="TURNO DEL JUGADOR: "+currentPlayer
+ 
+})
  
 })
  
+ 
+restartBtn.onclick=()=>{
+ 
+cells.forEach(cell=>{
+cell.textContent=""
+cell.classList.remove("X","O")
 })
+ 
+currentPlayer="X"
+turnText.textContent="TURNO DEL JUGADOR: X"
+ 
+winnerBox.classList.remove("show")
+ 
+}
  
  
 function checkWinner(){
  
-let combos = [
+let combos=[
  
 [0,1,2],
 [3,4,5],
@@ -57,32 +79,16 @@ let combos = [
  
 for(let combo of combos){
  
-let a = cells[combo[0]].textContent
-let b = cells[combo[1]].textContent
-let c = cells[combo[2]].textContent
+let a=cells[combo[0]].textContent
+let b=cells[combo[1]].textContent
+let c=cells[combo[2]].textContent
  
-if(a && a === b && a === c){
+if(a && a===b && a===c){
 return true
 }
  
 }
  
 return false
- 
-}
- 
- 
-function resetGame(){
- 
-cells.forEach(cell=>{
-cell.textContent=""
-cell.classList.remove("X","O")
-})
- 
-currentPlayer="X"
- 
-turnText.textContent="TURNO DEL JUGADOR: X"
- 
-winnerScreen.classList.remove("show")
  
 }
